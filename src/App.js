@@ -82,7 +82,7 @@ export default function App() {
           key: "left",
           frames: this.anims.generateFrameNumbers("dude", { start: 0, end: 3 }),
           frameRate: 10,
-          repeat: 1,
+          repeat: -1,
         });
         this.anims.create({
           key: "turn",
@@ -156,7 +156,7 @@ export default function App() {
         }
 
         if (this.cursors.up.isDown && this.player.body.touching.down) {
-          this.player.setVelocityY(-400);
+          this.player.setVelocityY(-350);
         }
       }
     }
