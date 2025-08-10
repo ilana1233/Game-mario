@@ -24,7 +24,7 @@ const levels = [
     ],
   },
   {
-    playerStart: { x: 50, y: 350 },
+    playerStart: { x: 300, y: 350 }, // שונה כדי להיות על הפלטפורמה
     platforms: [
       { x: 300, y: 440, scale: 3 },
       { x: 550, y: 350, scale: 1 },
@@ -82,7 +82,7 @@ export default function App() {
           key: "left",
           frames: this.anims.generateFrameNumbers("dude", { start: 0, end: 3 }),
           frameRate: 10,
-          repeat: -1,
+          repeat: -1, // שונה מ-1 ל- -1
         });
         this.anims.create({
           key: "turn",
@@ -99,7 +99,6 @@ export default function App() {
         this.physics.add.collider(this.player, this.platforms);
         this.physics.add.collider(this.coins, this.platforms);
 
-        // קריאת overlap כאן בתוך create
         this.physics.add.overlap(this.player, this.coins, this.collectCoin, null, this);
 
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -120,7 +119,7 @@ export default function App() {
           let coin = this.coins.create(c.x, c.y, "coin");
           coin.setBounceY(Phaser.Math.FloatBetween(0.3, 0.7));
         });
-        
+
         this.player.setVelocity(0);
         this.player.setPosition(levelData.playerStart.x, levelData.playerStart.y);
 
@@ -156,7 +155,7 @@ export default function App() {
         }
 
         if (this.cursors.up.isDown && this.player.body.touching.down) {
-          this.player.setVelocityY(-350);
+          this.player.setVelocityY(-400);
         }
       }
     }
@@ -167,7 +166,7 @@ export default function App() {
       height: 450,
       physics: {
         default: "arcade",
-        arcade: { gravity: { y: 600 }, debug: false },
+        arcade: { gravity: { y: 100 }, debug: false },
       },
       parent: "game-container",
       scene: MyScene,
